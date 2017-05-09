@@ -1,5 +1,7 @@
 Rails.application.routes.draw do  
-  # get 'users/new'
-  resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :expense_groups
+  resources :users, only: [:index, :create, :update, :show, :destroy]
+  
+  root :to => "home#index"
 end

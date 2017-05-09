@@ -30,4 +30,33 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  this_file_language: "English"
+  #--- Other locales ---#
+  # Locales translation
+  'pt-BR': "Português (Brasil)"
+  'en':    "English "
+#---A---#
+#---B---#
+#---C---#
+#---D---#
+#---F---#
+#---G---#
+#---H---#
+#---I---#
+#---J---#
+#---L---#
+#---M---#
+#---N---#
+#---O---#
+#---W---#
+  'wellcome': "Wellcome"
+#---P---#
+#---Q---#
+#---R---#
+#---S---#
+#---T---#
+#---U---#
+#---V---#
+#---X---#
+#---Y---#
+#---Z---#
