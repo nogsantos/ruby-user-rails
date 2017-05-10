@@ -15,9 +15,13 @@ class User < ApplicationRecord
                     :with => /(?=.*\d+)(?=.*[A-Z]+)(?=.*[a-z]+)\A.{4,}\z/,
                     :message => "Formato inválido",
                     :allow_blank => false
-                }
-    # has_secure_password
-
+                }    
     validates :username, :format => { :with => /\A[a-z\d_\-\.@]+\z/i }
 
+    before_create :generate_token
+
+    def generate_token
+        puts SecureRandom.urlsafe_base64
+        # self.confirmation_token = SecureRandom.urlsafe_base64
+    end
 end
