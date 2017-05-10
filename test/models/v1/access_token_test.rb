@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ExpenseGroupTest < ActiveSupport::TestCase
+class V1::AccessTokenTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

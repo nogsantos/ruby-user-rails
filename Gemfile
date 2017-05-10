@@ -42,4 +42,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'responders'
 
+# Escrever números por extenso
 gem "brnumeros", "~> 3.3.0"
+
+# Serializer json responses
+gem 'active_model_serializers', '~> 0.10.6'
+gem 'active_hash_relation', '~> 1.4.0'
+
+# Pagination
+gem 'kaminari'
+# Policies
+gem 'pundit', '~> 0.3.0'

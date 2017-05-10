@@ -1,4 +1,7 @@
-class User < ApplicationRecord
+=begin
+    Model v1 User    
+=end
+class V1::User < ActiveRecord::Base
     prepend PasswordAttribute
 
     validates :email, :username, :password, :name, :presence => { :message => "Campo requerido"}

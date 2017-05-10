@@ -1,7 +1,11 @@
 Rails.application.routes.draw do  
   
-  resources :expense_groups
-  resources :users, only: [:index, :create, :update, :show, :destroy]
-  
+  namespace :v1 do
+    resources :users
+  end
+  namespace :v1 do
+    resources :auths
+  end
+    
   root :to => "home#index"
 end
