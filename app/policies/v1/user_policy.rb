@@ -1,4 +1,9 @@
 class V1::UserPolicy < ApplicationPolicy
+
+    def index?
+        return true
+    end
+
     def show?
         return true
     end
@@ -19,7 +24,7 @@ class V1::UserPolicy < ApplicationPolicy
 
     class Scope < ApplicationPolicy::Scope
         def resolve
-        scope.all
+            scope.all
         end
     end
 end

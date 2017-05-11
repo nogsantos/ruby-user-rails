@@ -37,4 +37,4 @@ pt_BR:
       'body': |
           Seja bem vindo, %{full_name}.
       'confirm_link_html': 'Para você começar a usar o site, acesse o link: %{link}'
-      'thanks_html': 'Obrigado por se cadastrar no %{link}.'
+      'thanks_html': 'Obrigado por se cadastrar no %{link}.'   

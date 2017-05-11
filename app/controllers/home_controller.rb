@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
     def index
-        render json: "v"
+        render(
+            json: "by Fabricio Nogueira <nogsantos@gmail.com>"
+        )
     end
 end

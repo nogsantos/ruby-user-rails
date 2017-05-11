@@ -3,7 +3,7 @@ require 'logger'
     Controller v1 User    
 =end
 class V1::UsersController < V1::BaseController    
-    before_action :authenticate_user!, only: [:show, :update, :destroy]
+    # before_action :authenticate_user!, only: [:index, :show, :update, :destroy]
     
     def index
         begin
@@ -28,28 +28,23 @@ class V1::UsersController < V1::BaseController
         end
     end
 
-    def create
-        begin      
-            user = V1::User.new(user_params)
-            user.status = true
-            if user.save            
-                render(
-                    json: ActiveModelSerializers::SerializableResource.new(
-                        user,
-                        serializer: V1::UserSerializer,
-                        root: 'users'
-                    ).to_json
-                )
-                SignupMailer.confirm_email(user).deliver
-            else
-                return api_error(
-                    status: 422, 
-                    errors: user.errors
-                )
-            end
-        rescue => error
-            logger.fatal(error)
-            return api_error(status: 500)
+    def create        
+        user = V1::User.new(user_params)
+        user.status = true
+        if user.save
+            render(
+                json: ActiveModelSerializers::SerializableResource.new(
+                    user,
+                    serializer: V1::UserSerializer,
+                    root: 'users'
+                ).to_json
+            )
+            SignupMailer.confirm_email(user).deliver
+        else
+            return api_error(
+                status: 422, 
+                errors: user.errors
+            )
         end        
     end
 
@@ -121,8 +116,8 @@ class V1::UsersController < V1::BaseController
     
     private
         def user_params
-            params.require(:user)
-                .permit(:name, :email, :password, :username, :status)
-                .delete_if{ |k,v| v.nil?}
+            params.require(:user).permit(
+                :name, :email, :password, :password_confirmation, :username, :status
+            ).delete_if{ |k,v| v.nil?}
         end
 end

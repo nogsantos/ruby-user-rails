@@ -1,19 +1,22 @@
-class V1::AuthsController < ApplicationController
-    def create
-    user = User.find_by(username: create_params[:username])
-    if user && user.authenticate(create_params[:password])
-        self.current_user = user
-        render(
-            json: Api::V1::SessionSerializer.new(user, root: false).to_json,
-            status: 201
-        )
-    else
-        return api_error(status: 401)
+=begin
+    Controller v1 Auth 
+=end
+class V1::AuthsController < V1::BaseController
+    def create        
+        user = V1::User.find_by(username: auth_params[:username])
+        if user && user.authenticate(auth_params[:password])
+            self.current_user = user            
+            render(
+                json: %w{"autenticado"},
+                status: 201
+            )            
+        else
+            return unauthenticated!        
+        end        
     end
-  end
 
-  private
-    def create_params
+private
+    def auth_params
         params.require(:user).permit(:username, :password)
     end
 end

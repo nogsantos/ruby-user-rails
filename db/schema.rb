@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510152708) do
+ActiveRecord::Schema.define(version: 20170511011059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expense_groups", force: :cascade do |t|
+    t.string "name"
+    t.boolean "status"
+    t.text "observation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "v1_access_tokens", force: :cascade do |t|
     t.bigint "user_id"
@@ -25,11 +33,6 @@ ActiveRecord::Schema.define(version: 20170510152708) do
     t.index ["user_id"], name: "index_v1_access_tokens_on_user_id"
   end
 
-  create_table "v1_auths", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "v1_users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170510152708) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
